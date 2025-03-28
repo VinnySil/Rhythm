@@ -89,7 +89,7 @@
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Rhythm') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Administración') }}
             </x-responsive-nav-link>
         </div>
