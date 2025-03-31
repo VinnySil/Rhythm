@@ -49,12 +49,13 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:30',
             'nick' => 'required|string|max:30|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique.users',
+            'nif' => 'required|string|min:6|confirmed',
             'rol' => 'nullable|string|'
         ]);
         $user = User::create($request->all());
         $user->save();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')
     }
 
     /**

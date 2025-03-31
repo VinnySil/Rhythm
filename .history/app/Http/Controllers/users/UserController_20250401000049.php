@@ -18,7 +18,7 @@ class UserController extends Controller
            'searcher' => 'nullable|string|max:30',
         ]);
 
-        $searcher = $request->input('searcher');
+55        $searcher = $request->input('searcher');
 
         //init querry
         $query = User::query();
