@@ -16,7 +16,6 @@
                 </button>
                 <input type="text" placeholder="Buscar..." name="searcher" id="searcher" class="bg-slate-800 border-none focus:outline-none focus:border-transparent focus:ring-0">
 
-            </form>
         </div>
         <x-table
         :headers="['Actions','Nombre', 'Nick', 'Correo', 'Rol', 'Creado', 'Ultima actualización']"
