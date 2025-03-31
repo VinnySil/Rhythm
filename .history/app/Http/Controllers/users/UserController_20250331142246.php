@@ -23,8 +23,8 @@ class UserController extends Controller
         //init querry
         $query = User::query();
         //aplicamos los filtros a cada parametro que nos llega
-        // if(!empty($searcher)) {$query->where('nick', 'like', '%'.$searcher.'%');}
-        // if(!empty($searcher)) {$query->where('rol', 'like', '%'.$searcher.'%');}
+        if(!empty($searcher)) {$query->where('nick', 'like', '%'.$searcher.'%');}
+        if(!empty($searcher)) {$query->where('rol', 'like', '%'.$searcher.'%');}
         if(!empty($searcher)) {$query->where('name', 'like', '%'.$searcher.'%');}
 
         $users = $query->paginate(1);
@@ -37,7 +37,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        //
     }
 
     /**
