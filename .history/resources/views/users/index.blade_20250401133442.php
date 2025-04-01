@@ -21,7 +21,7 @@
         :headers="['Actions','Nombre', 'Nick', 'Correo', 'Rol', 'Creado', 'Ultima actualización']"
         :fields="['name', 'nick', 'email', 'rol', 'created_at', 'update_at']"
         :items="$users"
-        :type="['users']"
+        :type="users"
         />
         <div class="mt-4">
             {{ $users->links() }}

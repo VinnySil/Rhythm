@@ -17,12 +17,12 @@ class Table extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($headers, $fields, $items, $type)
+    public function __construct($headers, $fields, $items, $routes)
     {
         $this->headers = $headers;
         $this->fields = $fields;
         $this->items = $items;
-        $this->type = $type;
+        $this->routes = $routes;
     }
 
     /**
