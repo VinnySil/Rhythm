@@ -12,8 +12,9 @@
             <div>{{$user->nick}}</div>
         </div>
         <div id="data-container" class="text-start p-4 mt-8">
-            <div class="border-b-pink-200 border-b-2 p-2">{{$user->name}}</div>
+            <div class="border-b-pink-200 border-b-2 p-2 ">{{$user->name}}</div>
             <div class="border-b-pink-200 border-b-2 p-2">{{$user->email}}</div>
+            <div class="border-b-pink-200 border-b-2 p-2">{{$user->password}}</div>
         </div>
     </div>
 </x-app-layout>

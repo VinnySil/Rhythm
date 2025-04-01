@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <div id="container" class="text-white text-center">
-        <div class="w-full p-4"><h1 class="text-2xl">{{$user->rol}}</h1></div>
+        <div class="bg-gradient-to-r from-pink-400 to-purple-800 w-full p-4"><h1 class="size-1">{{$user->rol}}</h1></div>
         <div id="profile-photo" class="flex flex-col justify-center items-center relative ">
             <div class="flex justify-center items-center m-10 border-4 border-pink-200 rounded-full w-40 h-40">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-24">
@@ -14,6 +14,7 @@
         <div id="data-container" class="text-start p-4 mt-8">
             <div class="border-b-pink-200 border-b-2 p-2">{{$user->name}}</div>
             <div class="border-b-pink-200 border-b-2 p-2">{{$user->email}}</div>
+            {{-- <div>{{$user->password}}</div> --}}
         </div>
     </div>
 </x-app-layout>

@@ -1,0 +1,40 @@
+<x-app-layout>
+
+    <div id="container" class="text-white text-center">
+        <div class="bg-gradient-to-r from-pink-400 to-purple-800 w-full p-4"><h1>{{$user->nick}}</h1></div>
+        <div id="profile-photo" class="flex justify-center">
+            <div class="flex justify-center items-center m-10 border-4 border-pink-200 rounded-full w-40 h-40">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+                </svg>                    
+            </div>
+        </div>
+        <div id="data-container">
+                <div class="flex justify-between flex-col h-full">
+                    <h1 class="text-3xl p-4">Datos personales</h1>
+                    <div class="flex">
+                        <div class="bg-gray-800 p-4 w-1/4 rounded-tl-xl"><h2>Nick:</h2></div>
+                        <div class="p-4 w-1/2 bg-gray-700 rounded-tr-xl">{{$user->nick}}</div>
+                    </div>
+                    <div class="flex">
+                        <div class="bg-gray-800 p-4 w-1/4"><h2>Nombre Completo:</h2></div>
+                        <div class="p-4 w-1/2 bg-gray-700">{{$user->name}}</div>
+                    </div>
+                    <div class="flex">
+                        <div class="bg-gray-800 p-4 w-1/4"><h2>Email:</h2></div>
+                        <div class="p-4 w-1/2 bg-gray-700">{{$user->email}}</div>
+                    </div>
+                    <div class="flex">
+                        <div class="bg-gray-800 p-4 w-1/4">Ciudad:</div>
+                        <div class="p-4 w-1/2 bg-gray-700">{{$user->city}}</div>
+                    </div>
+                    <div class="flex">
+                        <div class="bg-gray-800 p-4 w-1/4 rounded-bl-xl">Dirección:</div>
+                        <div class="p-4 w-1/2 bg-gray-700 rounded-br-xl">{{$user->direction}}</div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+</x-app-layout>

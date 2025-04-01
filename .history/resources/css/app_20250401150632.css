@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.wave{
+    position: absolute;
+    height: 225px;
+    width: 100%;
+}
+
+.wave::before{
+ content: '';
+ display: block;
+ position: absolute;
+ border-radius: 100% 50%;
+ width: 55%;
+ height: 55%;
+ bottom: 0;
+
+ background-color:#111827;
+ transform: translate(85%, 60%);
+}
+
+.wave::after{
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+    width: 55%;
+    height: 100%;
+    background-color:blueviolet;
+    transform: translate(-4%, 40%);
+    z-index: -1;
+}

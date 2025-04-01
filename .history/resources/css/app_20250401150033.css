@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.wave{
+    position: absolute;
+    height: 225px;
+    width: ;;
+}
