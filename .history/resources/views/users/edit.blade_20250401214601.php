@@ -12,8 +12,9 @@
             <div>{{$user->nick}}</div>
         </div>
         <div id="data-container" class="text-start p-4 mt-8">
-            <div class="border-b-pink-200 border-b-2 p-2">{{$user->name}}</div>
-            <div class="border-b-pink-200 border-b-2 p-2">{{$user->email}}</div>
+            <div class="border-b-pink-200 border-b-2 "><input type="text" name="name" id="name" value={{old('name', $user->name)}} class="bg-slate-900 border-none focus:outline-none focus:border-transparent focus:ring-0 w-full"></div>
+            <div class="border-b-pink-200 border-b-2 "><input type="text" name="email" id="email" value={{old('email', $user->nick)}} class="bg-slate-900 border-none focus:outline-none focus:border-transparent focus:ring-0 w-full"></div>
+            <div class="border-b-pink-200 border-b-2 "><input type="text" name="email" id="email" value={{old('email', $user->email)}} class="bg-slate-900 border-none focus:outline-none focus:border-transparent focus:ring-0 w-full"></div>
         </div>
     </div>
 </x-app-layout>

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div id="container" class="text-white text-center max-w-lg mx-auto my-10">
+    <div id="container" class="text-white text-center max-w-28">
         <div class="w-full p-4"><h1 class="text-2xl">{{$user->rol}}</h1></div>
         <div id="profile-photo" class="flex flex-col justify-center items-center relative ">
             <div class="flex justify-center items-center m-10 border-4 border-pink-200 rounded-full w-40 h-40">

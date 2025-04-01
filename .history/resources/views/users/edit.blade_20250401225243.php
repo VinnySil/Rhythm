@@ -23,6 +23,7 @@
             <div class="border-b-pink-200 border-b-2 "><input type="password" placeholder="Contraseña nueva" name="password" id="password" class="bg-slate-900 border-none focus:outline-none focus:border-transparent focus:ring-0 w-full"></div>
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
             <div class="border-b-pink-200 border-b-2 "><input type="password" placeholder="Contraseña antigua" name="old_password" id="old_password" class="bg-slate-900 border-none focus:outline-none focus:border-transparent focus:ring-0 w-full"></div>
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
             <x-primary-button class="w-full flex justify-center mt-8">
                 {{ __('Guardar') }}
             </x-primary-button>

@@ -15,13 +15,9 @@
             @csrf
             @method('PATCH')
             <div class="border-b-pink-200 border-b-2 "><input type="text" placeholder="Nombre..." name="name" id="name" value={{old('name', $user->name)}} class="bg-slate-900 border-none focus:outline-none focus:border-transparent focus:ring-0 w-full"></div>
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
             <div class="border-b-pink-200 border-b-2 "><input type="text" placeholder="Nombre de usuario..." name="nick" id="nick" value={{old('email', $user->nick)}} class="bg-slate-900 border-none focus:outline-none focus:border-transparent focus:ring-0 w-full"></div>
-            <x-input-error :messages="$errors->get('nick')" class="mt-2" />
             <div class="border-b-pink-200 border-b-2 "><input type="text" placeholder="Correo electrónico..." name="email" id="email" value={{old('email', $user->email)}} class="bg-slate-900 border-none focus:outline-none focus:border-transparent focus:ring-0 w-full"></div>
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
             <div class="border-b-pink-200 border-b-2 "><input type="password" placeholder="Contraseña nueva" name="password" id="password" class="bg-slate-900 border-none focus:outline-none focus:border-transparent focus:ring-0 w-full"></div>
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
             <div class="border-b-pink-200 border-b-2 "><input type="password" placeholder="Contraseña antigua" name="old_password" id="old_password" class="bg-slate-900 border-none focus:outline-none focus:border-transparent focus:ring-0 w-full"></div>
             <x-primary-button class="w-full flex justify-center mt-8">
                 {{ __('Guardar') }}

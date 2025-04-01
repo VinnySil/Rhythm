@@ -5,7 +5,6 @@ namespace App\Http\Controllers\users;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -80,20 +79,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required|string|max:30',
-            'nick' => "required|string|max:30|unique:users,nick,{$user->id}",
-            'email' => "required|string|email|max:255|unique:users,email,{$user->id}",
-            'old_password' => 'nullable|string|min:6|',
-            'password' => 'nullable|string|min:6|',
-        ]);
-
-        if($request->filled('old_password')){ //Compruebo que me llegue la contraseña antigua
-            if(!Hash::check($request->old_password, $user->password)) //Compruebo que el usuario haya introducido la contraseña antigua para poder cambiarla
-                return back()->withErrors(["old_password" => "La contraseña no es correcta"]);
-        }//END if old_password
-
-        $user->update($request->all());
-        return redirect()->route("users.show", $user);
+            
+        ])
     }
 
     /**
