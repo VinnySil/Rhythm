@@ -19,7 +19,7 @@
         </div>
         <x-table
         :headers="['Actions','Nombre', 'Nick', 'Correo', 'Rol', 'Desactivado', 'Creado', 'Ultima actualización']"
-        :fields="['name', 'nick', 'email', 'rol', 'created_at', 'deleted' ,'update_at']"
+        :fields="['name', 'nick', 'email', 'rol', 'created_at',  ,'update_at']"
         :items="$users"
         :type="['users']"
         />

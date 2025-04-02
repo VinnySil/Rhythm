@@ -23,7 +23,7 @@
                     @if ($field !== 'created_at' && $field !== 'update_at')
                         <td class="px-4 py-4 text-white text-center">{{ $item->$field }}</td>    
                     @elseif($field === 'deleted')
-                        <td class="px-4 py-4 text-white text-center">{{ ($item->$field) ? 'Si' : 'No' }}</td>    
+                        <td class="px-4 py-4 text-white text-center">{{ ($item->$field === 1) ? 'Si' : 'No' }}</td>    
                     @endif
                 @endforeach
                 <td class="px-4 py-4 text-white text-center">{{ $item->getFormattedDate('created_at') }}</td>

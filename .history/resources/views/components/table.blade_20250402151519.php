@@ -25,6 +25,7 @@
                     @elseif($field === 'deleted')
                         <td class="px-4 py-4 text-white text-center">{{ ($item->$field) ? 'Si' : 'No' }}</td>    
                     @endif
+                    @dfgkjsfl()
                 @endforeach
                 <td class="px-4 py-4 text-white text-center">{{ $item->getFormattedDate('created_at') }}</td>
                 <td class="px-4 py-4 text-white text-center">{{ $item->getFormattedDate('updated_at') }}</td>
