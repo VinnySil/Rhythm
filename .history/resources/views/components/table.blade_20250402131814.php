@@ -1,5 +1,5 @@
 <table class="min-w-full shadow-sm">
-    <thead class="bg-gray-800 text-white">
+    <thead class="bg-slate-00 text-white">
         <tr>
             @foreach ($headers as $header)
                 <th class="px-4 py-4 text-center">{{ $header }}</th>

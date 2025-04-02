@@ -103,6 +103,5 @@ class UserController extends Controller
     {
         $user->deleted = true;
         $user->save();
-        return redirect()->route('users.index');
     }
 }

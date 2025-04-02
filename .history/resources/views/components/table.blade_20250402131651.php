@@ -1,5 +1,5 @@
 <table class="min-w-full shadow-sm">
-    <thead class="bg-gray-800 text-white">
+    <thead class="bg-gray-600 text-white">
         <tr>
             @foreach ($headers as $header)
                 <th class="px-4 py-4 text-center">{{ $header }}</th>
@@ -15,7 +15,8 @@
                     <form method="POST" action={{ route($type[0].'.destroy', $item)}} class="w-10 hover:scale-105 cursor-pointer">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"><img src="{{asset('cruds/eliminar.png')}}" alt="eliminar ".$type[0]></button>
+                        <button></button>
+                        <img src="{{asset('cruds/eliminar.png')}}" alt="eliminar ".$type[0]>
                     </form>
                 </td>
                 @foreach ($fields as $field)
