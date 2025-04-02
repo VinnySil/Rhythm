@@ -47,7 +47,7 @@
 
             <!--Rol-->
             <div class="mt-4 flex justify-center">
-                <select name="rol" id="rol" class="bg-gray-700 border-gray-700 text-gray-300 rounded w-11/12 text-center">
+                <select name="rol" id="rol" class="bg-gray-700 border-gray-700 text-gray-300 rounded">
                     <option value="client" @selected($user->rol === 'client')>Cliente</option>
                     <option value="admin" @selected($user->rol === 'admin')>Administrador</option>
                     <option value="artist" @selected($user->rol === 'artist')>Artista</option>
@@ -55,17 +55,13 @@
             </div>
 
             <!--Borrado-->
-            <div class="mt-4 flex text-white items-center">
+            <div class="mt-4 flex justify-center text-white">
                 <label for="deleted">Borrar:</label>
-                <div class="ml-5 grid sm:flex">
-                    <div>
-                        <input type="radio" name="deleted" value="1" @checked($user->deleted === 1)>
-                        <label>Si</label>
-                    </div>
-                    <div class="sm:ml-4">
-                        <input type="radio" name="deleted" value="0" @checked($user->deleted === 0)>
-                        <label>No</label>
-                    </div>
+                <div class="ml-5 gap">
+                    <input type="radio" name="deleted">
+                    <label>Si</label>
+                    <input type="radio" name="deleted">
+                    <label>No</label>
                 </div>
             </div>
 

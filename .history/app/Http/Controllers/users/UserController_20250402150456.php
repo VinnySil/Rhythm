@@ -85,8 +85,7 @@ class UserController extends Controller
             'email' => "required|string|email|max:255|unique:users,email,{$user->id}",
             'old_password' => 'nullable|string|min:6|',
             'password' => 'nullable|string|min:6|',
-            'rol' => 'required|string',
-            'deleted' => 'required|in:0,1'
+            'rol' => 'required|string'
         ]);
 
         if($request->filled('old_password')){ //Compruebo que me llegue la contraseña antigua

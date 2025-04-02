@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="w-2/4 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg mt-5 m-auto text-center max-w-2xl">
-        <h1 class="dark:text-white text-2xl p-4">Modificar usuario</h1>
+        <h1 class="dark:text-white text-2xl p-4">Crear nuevo usuario</h1>
         <form method="POST" enctype="multipart/form-data" action={{ route('users.update', $user)}} method="POST" id="edit-form" class="sm:p-4 sm:w-2/3 m-auto">
             @csrf
             @method('PATCH')  
@@ -45,28 +45,13 @@
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
-            <!--Rol-->
+            <!--Role-->
             <div class="mt-4 flex justify-center">
-                <select name="rol" id="rol" class="bg-gray-700 border-gray-700 text-gray-300 rounded w-11/12 text-center">
-                    <option value="client" @selected($user->rol === 'client')>Cliente</option>
-                    <option value="admin" @selected($user->rol === 'admin')>Administrador</option>
-                    <option value="artist" @selected($user->rol === 'artist')>Artista</option>
+                <select name="rol" id="rol" class="bg-gray-700 border-gray-700 text-gray-300 rounded">
+                    <option value="client">Cliente</option>
+                    <option value="admin">Administrador</option>
+                    <option value="artist">Artista</option>
                 </select>
-            </div>
-
-            <!--Borrado-->
-            <div class="mt-4 flex text-white items-center">
-                <label for="deleted">Borrar:</label>
-                <div class="ml-5 grid sm:flex">
-                    <div>
-                        <input type="radio" name="deleted" value="1" @checked($user->deleted === 1)>
-                        <label>Si</label>
-                    </div>
-                    <div class="sm:ml-4">
-                        <input type="radio" name="deleted" value="0" @checked($user->deleted === 0)>
-                        <label>No</label>
-                    </div>
-                </div>
             </div>
 
             <div class="flex items-center justify-center mt-4 w-full">    

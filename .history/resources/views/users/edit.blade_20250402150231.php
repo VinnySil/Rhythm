@@ -59,7 +59,7 @@
                 <label for="deleted">Borrar:</label>
                 <div class="ml-5 grid sm:flex">
                     <div>
-                        <input type="radio" name="deleted" value="1" @checked($user->deleted === 1)>
+                        <input type="radio" name="deleted" @checked($user->deleted === 1)>
                         <label>Si</label>
                     </div>
                     <div class="sm:ml-4">

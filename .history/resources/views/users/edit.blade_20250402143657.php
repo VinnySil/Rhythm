@@ -1,6 +1,22 @@
 <x-app-layout>
+
+    <div id="container" class="text-white text-center max-w-lg mx-auto my-10">
+        <div class="w-full p-4"><h1 class="text-2xl">{{$user->rol}}</h1></div>
+        <div id="profile-photo" class="flex flex-col justify-center items-center relative ">
+            <div class="flex justify-center items-center m-10 border-4 border-pink-200 rounded-full w-40 h-40 cursor-pointer hover:bg-slate-600">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+                </svg>                    
+            </div>
+            <div>{{$user->nick}}</div>
+        </div>
+    </div>
+
+
+
     <div class="w-2/4 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg mt-5 m-auto text-center max-w-2xl">
-        <h1 class="dark:text-white text-2xl p-4">Modificar usuario</h1>
+        <h1 class="dark:text-white text-2xl p-4">Crear nuevo usuario</h1>
         <form method="POST" enctype="multipart/form-data" action={{ route('users.update', $user)}} method="POST" id="edit-form" class="sm:p-4 sm:w-2/3 m-auto">
             @csrf
             @method('PATCH')  
@@ -45,28 +61,13 @@
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
-            <!--Rol-->
+            <!--Role-->
             <div class="mt-4 flex justify-center">
-                <select name="rol" id="rol" class="bg-gray-700 border-gray-700 text-gray-300 rounded w-11/12 text-center">
-                    <option value="client" @selected($user->rol === 'client')>Cliente</option>
-                    <option value="admin" @selected($user->rol === 'admin')>Administrador</option>
-                    <option value="artist" @selected($user->rol === 'artist')>Artista</option>
+                <select name="rol" id="rol" class="bg-gray-700 border-gray-700 text-gray-300 rounded">
+                    <option value="client">Cliente</option>
+                    <option value="admin">Administrador</option>
+                    <option value="artist">Artista</option>
                 </select>
-            </div>
-
-            <!--Borrado-->
-            <div class="mt-4 flex text-white items-center">
-                <label for="deleted">Borrar:</label>
-                <div class="ml-5 grid sm:flex">
-                    <div>
-                        <input type="radio" name="deleted" value="1" @checked($user->deleted === 1)>
-                        <label>Si</label>
-                    </div>
-                    <div class="sm:ml-4">
-                        <input type="radio" name="deleted" value="0" @checked($user->deleted === 0)>
-                        <label>No</label>
-                    </div>
-                </div>
             </div>
 
             <div class="flex items-center justify-center mt-4 w-full">    

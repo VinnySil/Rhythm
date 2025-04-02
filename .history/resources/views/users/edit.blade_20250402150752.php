@@ -56,7 +56,7 @@
 
             <!--Borrado-->
             <div class="mt-4 flex text-white items-center">
-                <label for="deleted">Borrar:</label>
+                <label for="deleted">Desactivar:</label>
                 <div class="ml-5 grid sm:flex">
                     <div>
                         <input type="radio" name="deleted" value="1" @checked($user->deleted === 1)>

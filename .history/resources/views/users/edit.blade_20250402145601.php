@@ -55,15 +55,15 @@
             </div>
 
             <!--Borrado-->
-            <div class="mt-4 flex text-white items-center">
+            <div class="mt-4 flex text-white ">
                 <label for="deleted">Borrar:</label>
-                <div class="ml-5 grid sm:flex">
+                <div class="ml-5 grid">
                     <div>
-                        <input type="radio" name="deleted" value="1" @checked($user->deleted === 1)>
+                        <input type="radio" name="deleted">
                         <label>Si</label>
                     </div>
-                    <div class="sm:ml-4">
-                        <input type="radio" name="deleted" value="0" @checked($user->deleted === 0)>
+                    <div>
+                        <input type="radio" name="deleted">
                         <label>No</label>
                     </div>
                 </div>

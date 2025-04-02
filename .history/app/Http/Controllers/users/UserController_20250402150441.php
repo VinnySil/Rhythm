@@ -51,7 +51,7 @@ class UserController extends Controller
             'name' => 'required|string|max:30',
             'nick' => 'required|string|max:30|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
-            'rol' => 'nullable|string'
+            'rol' => 'nullable|string|'
         ]);
         $user = User::create($request->all());
         $user->save();
@@ -85,8 +85,7 @@ class UserController extends Controller
             'email' => "required|string|email|max:255|unique:users,email,{$user->id}",
             'old_password' => 'nullable|string|min:6|',
             'password' => 'nullable|string|min:6|',
-            'rol' => 'required|string',
-            'deleted' => 'required|in:0,1'
+            'rol' => 'nullable|string|'
         ]);
 
         if($request->filled('old_password')){ //Compruebo que me llegue la contraseña antigua
