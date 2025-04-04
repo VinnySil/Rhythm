@@ -17,12 +17,6 @@
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('artists.index')" :active="request()->routeIs('artists.index')">
-                        {{ __('Conviértete en nuesto Artista') }}
-                    </x-nav-link>
-                </div>
-
                 @if (Auth::check() && Auth::user()->rol === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
@@ -94,9 +88,6 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Rhythm') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('artists.index')" :active="request()->routeIs('artists.index')">
-                {{ __('Conviértete en nuesto Artista') }}
             </x-responsive-nav-link>
             @if (Auth::check() && Auth::user()->rol === 'admin')
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">

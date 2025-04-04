@@ -16,7 +16,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/artists', function(){
     return view('artists.index');
-})->name('artists.index');
+})->name('artist.index');
 
 Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

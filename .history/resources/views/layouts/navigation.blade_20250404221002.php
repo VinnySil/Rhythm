@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('artists.index')" :active="request()->routeIs('artists.index')">
+                    <x-nav-link :href="route('artist.dashboard')" :active="request()->routeIs('home')">
                         {{ __('Conviértete en nuesto Artista') }}
                     </x-nav-link>
                 </div>
@@ -95,7 +95,7 @@
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Rhythm') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('artists.index')" :active="request()->routeIs('artists.index')">
+            <x-responsive-nav-link :href="route('artist.dashboard')" :active="request()->routeIs('artist.dashboard')">
                 {{ __('Conviértete en nuesto Artista') }}
             </x-responsive-nav-link>
             @if (Auth::check() && Auth::user()->rol === 'admin')
