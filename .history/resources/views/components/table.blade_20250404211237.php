@@ -1,4 +1,4 @@
-<table class="min-w-full shadow-sm hidden xl:block">
+<table class="min-w-full shadow-sm hidden">
     <thead class="bg-gray-800 text-white">
         <tr>
             @foreach ($headers as $header)

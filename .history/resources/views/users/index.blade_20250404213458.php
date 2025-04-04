@@ -8,7 +8,7 @@
                 Crear usuario
             </a>
 
-            <form method="GET" action={{ route('users.index')}} id="searcher-container" class="bg-slate-800 rounded-2xl px-4 justify-center items-center hidden sm:flex">
+            <form method="GET" action={{ route('users.index')}} id="searcher-container" class="flex bg-slate-800 rounded-2xl px-4 justify-center items-center">
                 <button>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -18,14 +18,14 @@
             </form>
         </div>
         <x-table
-        :headers="['Acciones','Foto de perfil','Nombre', 'Nick', 'Correo', 'Rol', 'Desactivado', 'Creado', 'Ultima actualización']"
-        :fields="['photo', 'name', 'nick', 'email', 'rol', 'deleted', 'created_at' ,'update_at']"
+        :headers="['Actions','Foto de perfil','Nombre', 'Nick', 'Correo', 'Rol', 'Desactivado', 'Creado', 'Ultima actualización']"
+        :fields="['photo', 'name', 'nick', 'email', 'rol', 'created_at', 'deleted' ,'update_at']"
         :items="$users"
         :type="['users']"
         />
         <x-table-responsive
-        :headers="['Foto de perfil','Nombre', 'Nick', 'Correo', 'Rol', 'Desactivado', 'Creado', 'Ultima actualización', 'Acciones']"
-        :fields="['photo', 'name', 'nick', 'email', 'rol', 'deleted', 'created_at' ,'update_at']"
+        :headers="['Foto de perfil','Nombre', 'Nick', 'Correo', 'Rol', 'Desactivado', 'Creado', 'Ultima actualización']"
+        :fields="['photo', 'name', 'nick', 'email', 'rol', 'created_at', 'deleted' ,'update_at']"
         :items="$users"
         :type="['users']"
         />
