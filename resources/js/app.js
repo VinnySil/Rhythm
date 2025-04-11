@@ -7,72 +7,101 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-const rutaBase = "http://www.musicstudio.es/";
+document.addEventListener('DOMContentLoaded', function () {
+
+    const rutaBase = "http://www.musicstudio.es/";
+
+    const deleteButtonsUsers = document.querySelectorAll('.delete-user-button');
+
+    for (const button of deleteButtonsUsers) {
+        
+        button.addEventListener('click', e => {
+            e.preventDefault();
+
+            let nick = button.getAttribute('data-id');
+            const confirmar = confirm('¿Estás seguro de que quieres desactivar el usuario?')
+
+            if(!confirmar) return;
+
+            fetch(rutaBase+'admin/users/'+nick, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                },
+            })
+            .then(respose =>{
+                if(!respose.ok)
+                    throw new Error('Error en la solicitud DELETE');
+
+                return respose.json();
+            })
+            .then(data =>{
+                console.log('Elemento eliminado', data); 
+            })
+            .catch(error => {
+                console.error('Hubo un problema con la solicitud DELETE:', error);
+            });
+
+        });
+        
+    }
+
+    const profilePhoto = document.getElementById("profile_photo");
+    const file = document.getElementById("photo");
 
 
+    if(profilePhoto){
+        profilePhoto.addEventListener("click", () => {
 
-const deleteButtonsUsers = document.querySelectorAll('.delete-user-button');
-
-for (const button of deleteButtonsUsers) {
+            file.click();
+            
+        });
     
-    button.addEventListener('click', e => {
+        file.addEventListener("change", e => {
+    
+            //Saco los datos del archivo subido
+            let archivos = e.target.files[0];
+    
+            if(archivos !== undefined){ //Comrpuebo que no sea undefined
+    
+                //Creamos el objeto FileReader para leer la imagen
+                const reader = new FileReader();
+                reader.onload = e =>{profilePhoto.src=e.target.result;}
+    
+                reader.readAsDataURL(archivos);
+            }
+            else //Si pulsa el botón cancelar vuelvo a poner la imagen default
+                profilePhoto.src=rutaBase+"/build/user.png"
+        });
+    }
+
+    //Funcionalidad del input file dinamico
+    const inputFileSong = document.getElementById('music-artist-file');
+    const bUploadSong = document.getElementById('button-upload-song');
+    const fileArtistName = document.getElementById('file-name-artists');
+    const fileNameContainer = document.getElementById('file-name-container');
+    const bDeleteSongFile = document.getElementById('delete-file-artists');
+
+    bUploadSong.addEventListener('click', e => {inputFileSong.click();});
+
+    inputFileSong.addEventListener('change', e => {
+
+        let songFile= e.target.files[0];
+
+        if(songFile !== undefined){ //Comrpuebo que no sea undefined
+            fileArtistName.innerText = songFile.name;
+            fileNameContainer.style.display = 'flex';
+        }
+    });
+
+    bDeleteSongFile.addEventListener('click', e =>{
+
         e.preventDefault();
 
-        let nick = button.getAttribute('data-id');
-        const confirmar = confirm('¿Estás seguro de que quieres desactivar el usuario?')
-
-        if(!confirmar) return;
-
-        fetch(rutaBase+'admin/users/'+nick, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            },
-        })
-        .then(respose =>{
-            if(!respose.ok)
-                throw new Error('Error en la solicitud DELETE');
-
-            return respose.json();
-        })
-        .then(data =>{
-            console.log('Elemento eliminado', data); 
-        })
-        .catch(error => {
-            console.error('Hubo un problema con la solicitud DELETE:', error);
-        });
-
+        inputFileSong.value = '';
+        fileNameContainer.style.display = 'none';
     });
     
-}
 
-const profilePhoto = document.getElementById("profile_photo");
-const file = document.getElementById("photo");
-
-
-profilePhoto.addEventListener("click", () => {
-
-    file.click();
-    
 });
-
-file.addEventListener("change", e => {
-
-    //Saco los datos del archivo subido
-    let archivos = e.target.files[0];
-
-    if(archivos !== undefined){ //Comrpuebo que no sea undefined
-
-        //Creamos el objeto FileReader para leer la imagen
-        const reader = new FileReader();
-        reader.onload = e =>{profilePhoto.src=e.target.result;}
-
-        reader.readAsDataURL(archivos);
-    }
-    else //Si pulsa el botón cancelar vuelvo a poner la imagen default
-        profilePhoto.src=rutaBase+"/build/user.png"
-});
-
-
-
 
