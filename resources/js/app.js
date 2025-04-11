@@ -91,6 +91,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if(songFile !== undefined){ //Comrpuebo que no sea undefined
             fileArtistName.innerText = songFile.name;
             fileNameContainer.style.display = 'flex';
+
+            const reader = new FileReader();
+            reader.onload = e =>{profilePhoto.src=e.target.result;}
+
+            reader.readAsDataURL(archivos);
         }
     });
 

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('artist_requests', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('stage_name');
             $table->string('professional_email');
             $table->string('music_file');

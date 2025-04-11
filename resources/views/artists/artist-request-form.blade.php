@@ -16,7 +16,7 @@
 <body class="bg-[url('/public/bg-app/artists-bg.jpg')] bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center">
     <h1 class="absolute font-bold sm:text-6xl text-3xl sm:top-7 sm:left-7 top-10 text-[#FF73A6] text-shadow">Conviértete en el <br>artista que tanto has <br>soñado</h1>
     <div class="sm:w-1/3 p-4 sm:p-8 bg-white dark:bg-gray-800/70 shadow rounded-lg text-center max-w-2xl mt-24">
-        <form action="" class="flex flex-col gap-4 justify-center items-center">
+        <form action={{ route('artist.request.submit')}} method="POST" enctype="multipart/form-data" class="flex flex-col gap-4 justify-center items-center">
             @csrf    
             <div class="w-full">
                 <x-text-input id="stage_name" class="block mt-1 w-full" placeholder="Nombre de artista" type="text" name="stage_name" :value="old('stage_name')" required autofocus autocomplete="stage_name" />
