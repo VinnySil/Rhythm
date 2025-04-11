@@ -59,4 +59,7 @@ class User extends Authenticatable
     public function getFormattedDate($field){
         return isset($this->$field) ? Carbon::parse($this->$field)->format('d/m/Y') : 'N/A';
     }
+
+    //Relationships
+    public function artist(){return $this->hasOne(Artist::class);}
 }
