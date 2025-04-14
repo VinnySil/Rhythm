@@ -13,16 +13,18 @@ class Table extends Component
     public $fields;
     public $items;
     public $type;
+    public $actions;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($headers, $fields, $items, $type)
+    public function __construct($headers, $fields, $items, $type, $actions)
     {
         $this->headers = $headers;
         $this->fields = $fields;
         $this->items = $items;
         $this->type = $type;
+        $this->actions = $actions;
     }
 
     /**

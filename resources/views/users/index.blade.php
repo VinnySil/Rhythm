@@ -22,6 +22,7 @@
         :fields="['photo', 'name', 'nick', 'email', 'rol', 'deleted', 'created_at' ,'update_at']"
         :items="$users"
         :type="['users']"
+        :actions="['show', 'edit', 'delete']"
         />
         <x-table-responsive
         :headers="['Foto de perfil','Nombre', 'Nick', 'Correo', 'Rol', 'Desactivado', 'Creado', 'Ultima actualización', 'Acciones']"

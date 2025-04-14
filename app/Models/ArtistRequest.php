@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class ArtistRequest extends Model
@@ -12,4 +13,8 @@ class ArtistRequest extends Model
         'professional_email',
         'music_file',
     ];
+
+    public function getFormattedDate($field){
+        return isset($this->$field) ? Carbon::parse($this->$field)->format('d/m/Y') : 'N/A';
+    }
 }

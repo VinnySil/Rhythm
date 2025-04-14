@@ -22,8 +22,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-
     Route::resource('users', UserController::class)->names('users');
+    Route::resource('artist-requests', ArtistRequestController::class)->except(['create', 'update', 'store', 'edit'])->names('artistRequests');
 });
 
 Route::middleware('auth')->group(function () {

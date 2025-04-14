@@ -8,6 +8,23 @@ use Illuminate\Support\Facades\Auth;
 
 class ArtistRequestController extends Controller
 {
+
+
+    public function index(Request $request){
+
+        $artistRequests = ArtistRequest::all();
+        return view('artistRequests.index',  compact('artistRequests'));
+    }
+
+    public function show(ArtistRequest $artistRequest){
+        return "";
+    }
+
+
+    public function destroy(ArtistRequest $artistRequest){
+        return redirect()->route('artistRequests.index');
+    }
+
     public function formRequest(){
         return view('artists.artist-request-form');
     }
