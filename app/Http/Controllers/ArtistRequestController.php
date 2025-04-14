@@ -17,11 +17,15 @@ class ArtistRequestController extends Controller
     }
 
     public function show(ArtistRequest $artistRequest){
-        return "";
+
+        $user = $artistRequest->user;
+
+        return view('artistRequests.show',  compact('artistRequest', 'user'));;
     }
 
 
     public function destroy(ArtistRequest $artistRequest){
+        $artistRequest->delete();
         return redirect()->route('artistRequests.index');
     }
 

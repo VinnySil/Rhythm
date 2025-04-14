@@ -14,6 +14,9 @@ class ArtistRequest extends Model
         'music_file',
     ];
 
+
+    public function user(){return $this->belongsTo(User::class);}
+
     public function getFormattedDate($field){
         return isset($this->$field) ? Carbon::parse($this->$field)->format('d/m/Y') : 'N/A';
     }

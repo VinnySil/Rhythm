@@ -25,7 +25,8 @@ class User extends Authenticatable
         'email',
         'password',
         'rol',
-        'deleted' 
+        'deleted',
+        'photo' 
     ];
 
     /**
@@ -62,4 +63,5 @@ class User extends Authenticatable
 
     //Relationships
     public function artist(){return $this->hasOne(Artist::class);}
+    public function artistRequests() {return $this->hasMany(ArtistRequest::class);}
 }

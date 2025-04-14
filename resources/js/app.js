@@ -11,19 +11,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const rutaBase = "http://www.musicstudio.es/";
 
-    const deleteButtonsUsers = document.querySelectorAll('.delete-user-button');
+    const formsDelete = document.querySelectorAll('.delete-user-button');
 
-    for (const button of deleteButtonsUsers) {
+    for (const form of formsDelete) {
         
-        button.addEventListener('click', e => {
+        form.addEventListener('click', e => {
             e.preventDefault();
 
-            let nick = button.getAttribute('data-id');
-            const confirmar = confirm('¿Estás seguro de que quieres desactivar el usuario?')
+            console.log(form.action);
+            
+            const confirmar = confirm('¿Estás seguro de que quieres borrar?');
 
             if(!confirmar) return;
 
-            fetch(rutaBase+'admin/users/'+nick, {
+            fetch(form.action, {
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
@@ -36,10 +37,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 return respose.json();
             })
             .then(data =>{
-                console.log('Elemento eliminado', data); 
+                console.log('Elemento eliminado', data);
+                location.reload();
             })
             .catch(error => {
                 console.error('Hubo un problema con la solicitud DELETE:', error);
+                location.reload();
             });
 
         });

@@ -1,4 +1,4 @@
-<table class="min-w-full shadow-sm hidden xl:block">
+<table class="shadow-sm hidden xl:block">
     <thead class="bg-gray-800 text-white">
         <tr>
             @foreach ($headers as $header)
@@ -31,7 +31,6 @@
                     @endforeach
                 </td>
                 @foreach ($fields as $field)
-
                     @if ($field !== 'created_at' && $field !== 'update_at' && $field !== 'photo')
                         <td class="px-4 py-4 text-white text-center">{{ $item->$field }}</td>    
                     @elseif($field === 'deleted')
