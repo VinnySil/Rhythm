@@ -2,8 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;400;500&display=swap');
 
-/* En tu archivo CSS */
 .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.range-music{
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.3rem;
+  border-radius: 10rem;
+  background: linear-gradient(to right, #c93a76 0%, #c93a76 var(--value), #ddd var(--value), #ddd 100%);
+  cursor: pointer;
+  --value: 0%; /* Cambia este valor dinámicamente con JavaScript */
+}
+
+.range-music::-webkit-slider-thumb{
+  -webkit-appearance: none; /* Para Safari y Chrome */
+  appearance: none; /* Para otros navegadores */
+  background:#E5E7EB;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 100%;
+}
+
+
