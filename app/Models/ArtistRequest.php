@@ -12,6 +12,8 @@ class ArtistRequest extends Model
         'user_id',
         'professional_email',
         'music_file',
+        'title',
+        'status'
     ];
 
 

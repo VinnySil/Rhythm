@@ -15,7 +15,8 @@
         </div>
         <div class="text-white text-center">
             <x-music-card
-            :musicSource="$artistRequest->music_file"
+            :musicSource="$artistRequest"
+            :title="$artistRequest->title"
             :artist="$artistRequest->stage_name"
             />
         </div>

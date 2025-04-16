@@ -13,7 +13,7 @@
         </div>
         <input type="range" name="rangeTime" value="0" class="range-music">
         <audio>
-            <source src="{{asset('artists-request/songs/'.$musicSource)}}">
+            <source src="{{ route('artist-request.stream', $musicSource) }}">
         </audio>
     </div>
 

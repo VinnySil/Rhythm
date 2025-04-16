@@ -26,6 +26,10 @@
                 <x-text-input id="professional_email" class="block mt-1 w-full" placeholder="Correo profesional" type="email" name="professional_email" :value="old('professional_email')" required autocomplete="username" />
                 <x-input-error :messages="$errors->get('professional_email')" class="mt-2" />
             </div>
+            <div class="w-full">
+                <x-text-input id="title" class="block mt-1 w-full" placeholder="Título de la canción" type="text" name="title" :value="old('title')" required autofocus autocomplete="title" />
+                <x-input-error :messages="$errors->get('title')" class="mt-2" />
+            </div>
             <div class="w-full text-[#FF73A6] flex flex-col gap-4 justify-center items-center">
                 <input type="file" name="music-artist-file" id="music-artist-file" class="hidden">
                 <button type="button" id="button-upload-song" class="w-64 h-36 bg-gray-900/80 flex flex-col justify-center items-center gap-4 border-2 border-dotted border-pink-400 rounded-lg">
