@@ -28,7 +28,7 @@ class ArtistRequestController extends Controller
     public function destroy(ArtistRequest $artistRequest){
         
         if(Storage::disk('private')->exists($artistRequest->music_file))
-            Storage::disk('private')->delete($artistRequest->path);
+            Storage::disk('private')->delete($artistRequest->music_file);
 
         $artistRequest->delete();
 
