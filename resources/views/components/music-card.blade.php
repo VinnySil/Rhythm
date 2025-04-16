@@ -1,6 +1,6 @@
 <div class="bg-[#212936] w-96 rounded-3xl p-4 text-gray-500 font-sora">
     <div class="grid justify-items-center items-stretch">
-        <img src="{{asset('songs/covers/'.$imageCover)}}" alt="song-cover" class="w-11/12 rounded-2xl">
+        <img src="{{asset('songs/covers/'.$imageCover)}}" alt="song-cover" class="w-9/12 rounded-2xl">
         <div class="text-center mt-4">
             <h2 class="text-2xl text-white">{{$title}}</h2>
             <p>{{$artist}}</p>

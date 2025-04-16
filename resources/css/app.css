@@ -11,17 +11,18 @@
 
 .range-music{
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   height: 0.3rem;
   border-radius: 10rem;
   background: linear-gradient(to right, #c93a76 0%, #c93a76 var(--value), #ddd var(--value), #ddd 100%);
   cursor: pointer;
-  --value: 0%; /* Cambia este valor dinámicamente con JavaScript */
+  --value: 0%; /* Cambiar este valor dinámicamente con JavaScript */
 }
 
 .range-music::-webkit-slider-thumb{
-  -webkit-appearance: none; /* Para Safari y Chrome */
-  appearance: none; /* Para otros navegadores */
+  -webkit-appearance: none;
+  appearance: none;
   background:#E5E7EB;
   width: 0.7rem;
   height: 0.7rem;
