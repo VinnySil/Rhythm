@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artist;
 use App\Models\ArtistRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -77,6 +78,28 @@ class ArtistRequestController extends Controller
             'Content-Disposition' => 'inline; filename="track.mp3"',
         ]);
 
+    }
+
+    public function acceptRequest(ArtistRequest $artistRequest){
+
+        $artistRequest->status = 'accepted';
+        $artistRequest->save();
+
+        Artist::create([
+            'user_id' => $artistRequest->user_id,
+            'name' => $artistRequest->stage_name,
+            'email' => $artistRequest->professional_email
+        ]);
+
+        return redirect()->route("artistRequests.index");
+
+    }
+
+    public function rejectRequest(ArtistRequest $artistRequest){
+
+        $artistRequest->status = 'rejected';
+        $artistRequest->save();
+        return redirect()->route("artistRequests.index");
     }
 
 

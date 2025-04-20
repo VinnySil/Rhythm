@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('professional_email');
             $table->string('title')->default('Untitled Track');
             $table->string('music_file');
-            $table->enum('status', ['active', 'finished'])->default('active');
+            $table->enum('status', ['active', 'accepted', 'rejected'])->default('active');
             $table->timestamps();
         });
     }

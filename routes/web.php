@@ -20,8 +20,13 @@ Route::get('/songs/{artist_request}/stream', [ArtistRequestController::class, 's
 
 Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
     Route::resource('users', UserController::class)->names('users');
+
     Route::resource('artist-requests', ArtistRequestController::class)->except(['create', 'update', 'store', 'edit'])->names('artistRequests');
+
+    Route::patch('/request/{artist_request}/accept', [ArtistRequestController::class, 'acceptRequest'])->name('artist.request.accept');
+    Route::patch('/request/{artist_request}/reject', [ArtistRequestController::class, 'rejectRequest'])->name('artist.request.reject');
 });
 
 Route::middleware('auth')->group(function () {

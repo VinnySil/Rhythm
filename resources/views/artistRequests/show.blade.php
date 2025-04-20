@@ -12,6 +12,19 @@
                 <div class="border-b-pink-200 border-b-2 p-2">{{$artistRequest->stage_name}}</div>
                 <div class="border-b-pink-200 border-b-2 p-2">{{$artistRequest->professional_email}}</div>
             </div>
+            <div class="flex justify-center gap-10 mt-8">
+                <form action={{route('artist.request.accept', $artistRequest)}} method="post">
+                    @csrf
+                    @method('PATCH')
+                    <x-primary-button class="dark:bg-blue-500 dark:hover:bg-blue-700" type='submit'>Aceptar</x-primary-button>
+                </form>
+
+                <form action={{route('artist.request.reject', $artistRequest)}} method="post">
+                    @csrf
+                    @method('PATCH')
+                    <x-secondary-button class="dark:bg-red-500 dark:hover:bg-red-900 dark:text-white" type='submit'>Rechazar</x-secondary-button>
+                </form>
+            </div>
         </div>
         <div class="text-white text-center">
             <x-music-card
