@@ -16,12 +16,13 @@
                         {{ __('Rhythm') }}
                     </x-nav-link>
                 </div>
-
+                @if (Auth::check() && !Auth::user()->artist)
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('artist.request.form')" :active="request()->routeIs('artist.request.form')">
                         {{ __('Conviértete en nuesto Artista') }}
                     </x-nav-link>
                 </div>
+                @endif
 
                 @if (Auth::check() && Auth::user()->rol === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -30,6 +31,15 @@
                     </x-nav-link>
                 </div>
                 @endif
+
+                @if (Auth::check() && Auth::user()->artist)
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('artist.dashboard')" :active="request()->routeIs('artist.dashboard')">
+                        {{ __('Home Artista') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
             </div>
 
             <!-- Settings Dropdown -->

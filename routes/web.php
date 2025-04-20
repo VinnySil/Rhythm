@@ -3,9 +3,9 @@
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\ArtistRequestController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\users\ArtistUserController;
 use App\Http\Controllers\users\UserController;
 use App\Http\Middleware\AdminMiddleware;
-use App\Models\ArtistRequest;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -39,6 +39,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/request-artist', [ArtistRequestController::class, 'formRequest'])->name('artist.request.form');
     Route::post('/request-artist', [ArtistRequestController::class, 'submitRequest'])->name('artist.request.submit');
     Route::get('/request-artist/success', [ArtistRequestController::class, 'successPage'])->name('artist.request.success');
+
+    Route::prefix('artist')->group(function () {
+        
+        Route::get('dasboard', [ArtistUserController::class, 'index'])->name('artist.dashboard');
+
+    });
 });
 
 require __DIR__.'/auth.php';
