@@ -85,31 +85,96 @@ document.addEventListener('DOMContentLoaded', function () {
     const fileNameContainer = document.getElementById('file-name-container');
     const bDeleteSongFile = document.getElementById('delete-file-artists');
 
-    bUploadSong.addEventListener('click', e => {inputFileSong.click();});
+    if(bUploadSong) bUploadSong.addEventListener('click', e => {inputFileSong.click();});
 
-    inputFileSong.addEventListener('change', e => {
+    if(inputFileSong){
+        inputFileSong.addEventListener('change', e => {
 
-        let songFile= e.target.files[0];
-
-        if(songFile !== undefined){ //Comrpuebo que no sea undefined
-            fileArtistName.innerText = songFile.name;
-            fileNameContainer.style.display = 'flex';
-
-            const reader = new FileReader();
-            reader.onload = e =>{profilePhoto.src=e.target.result;}
-
-            reader.readAsDataURL(archivos);
-        }
-    });
-
-    bDeleteSongFile.addEventListener('click', e =>{
-
-        e.preventDefault();
-
-        inputFileSong.value = '';
-        fileNameContainer.style.display = 'none';
-    });
+            let songFile= e.target.files[0];
     
+            if(songFile !== undefined){ //Comrpuebo que no sea undefined
+                fileArtistName.innerText = songFile.name;
+                fileNameContainer.style.display = 'flex';
+    
+                const reader = new FileReader();
+                reader.onload = e =>{profilePhoto.src=e.target.result;}
+    
+                reader.readAsDataURL(archivos);
+            }
+        });
+    }
+
+    if(bDeleteSongFile){
+        bDeleteSongFile.addEventListener('click', e =>{
+
+            e.preventDefault();
+
+            inputFileSong.value = '';
+            fileNameContainer.style.display = 'none';
+        });
+    }
+
+
+
+
+    //Funcionalidad del reproducto de música
+    const bPlay = document.getElementById('bPlay');
+    const sourceMusic = document.getElementById('source-music');
+    const playImg = document.getElementById("imgPlay");
+    const rangeTimeMusic = document.getElementById("rangeTime");
+    rangeTimeMusic.value = 0;
+    const currentTimeMusic = document.getElementById("currentTime");
+    const durationTime = document.getElementById("durationTime");
+    
+    console.log(rangeTimeMusic);
+    
+
+
+    bPlay.addEventListener('click', playMusic)
+    
+
+
+    function playMusic(){
+
+        if(sourceMusic.paused){
+            sourceMusic.play()
+            playImg.src=rutaBase+"storage/img/musics/svg/pause.svg"
+        }
+        else{
+            sourceMusic.pause();
+            playImg.src=rutaBase+"storage/img/musics/svg/play.svg"
+        }
+    }
+
+    
+    sourceMusic.addEventListener("timeupdate", () =>{
+
+        let secTime = sourceMusic.currentTime.toFixed(2);
+        currentTimeMusic.textContent = formatTime(secTime);
+    
+    });
+
+    sourceMusic.addEventListener("loadedmetadata", () =>{
+
+        let secTime = sourceMusic.duration.toFixed(2);
+        durationTime.textContent = formatTime(secTime);
+    });
+
+
+    rangeTimeMusic.addEventListener("input", () =>{
+        rangeTimeMusic.style.setProperty("--value", rangeTimeMusic.value+"%")
+        
+    })
+
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `0${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+    
+
+
 
 });
 
