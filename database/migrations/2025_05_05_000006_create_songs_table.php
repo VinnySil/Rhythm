@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('artist_id')->constrained('artists')->onDelete('cascade');
             $table->foreignId('album_id')->constrained('albums')->onDelete('cascade');
-            $table->string('tile');
+            $table->string('title');
             $table->integer('duration'); //gaurdar la duracion en segundos
             $table->string('song_cover');
+            $table->string('song_source');
             $table->timestamps();
         });
     }
