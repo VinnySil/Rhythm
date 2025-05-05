@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="sm:w-2/4 w-11/12 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg mt-5 m-auto text-center max-w-2xl">
         <h1 class="dark:text-white text-2xl p-4">Modificar usuario</h1>
-        <form method="POST" enctype="multipart/form-data" action={{ route('users.update', $user)}} method="POST" id="edit-form" class="md:py-4 m-auto md:flex md:flex-col md:items-center">
+        <form method="POST" enctype="multipart/form-data" action={{ route('users.update', $user)}} id="edit-form" class="md:py-4 m-auto md:flex md:flex-col md:items-center">
             @csrf
             @method('PATCH')  
             <div id="main-container" class="md:flex grid gap-10">
