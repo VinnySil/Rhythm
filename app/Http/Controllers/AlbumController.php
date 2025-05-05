@@ -57,7 +57,7 @@ class AlbumController extends Controller
             //Guardo la nueva portada 
             $file = $request->file("album-cover-input");
             $filename = time().".".$file->getClientOriginalExtension();
-            $prueba = $file->move(storage_path("app/public/img/albums/covers/"), $filename);
+            $file->move(storage_path("app/public/img/albums/covers/"), $filename);
 
             $imgManager = new ImageManager(new Driver());
             $profilePhoto = $imgManager->read(storage_path("app/public/img/albums/covers/").$filename);
@@ -68,8 +68,6 @@ class AlbumController extends Controller
 
             //Actualizo el nombre de la foto en la base de datos
             $album->album_cover = $filename;
-
-
             //Guardo los cambios y vuelvo a la página del usuario
             $album->save();
         }

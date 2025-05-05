@@ -8,6 +8,7 @@ use App\Http\Controllers\SongController;
 use App\Http\Controllers\users\ArtistUserController;
 use App\Http\Controllers\users\UserController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\ArtistMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -45,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/request-artist', [ArtistRequestController::class, 'submitRequest'])->name('artist.request.submit');
     Route::get('/request-artist/success', [ArtistRequestController::class, 'successPage'])->name('artist.request.success');
 
-    Route::prefix('artist')->group(function () {
+    Route::middleware(['auth', ArtistMiddleware::class])->prefix('artist')->group(function () {
         
         Route::get('dasboard', [ArtistUserController::class, 'index'])->name('artist.dashboard');
 
