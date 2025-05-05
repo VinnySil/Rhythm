@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\ArtistRequestController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SongController;
 use App\Http\Controllers\users\ArtistUserController;
 use App\Http\Controllers\users\UserController;
 use App\Http\Middleware\AdminMiddleware;
@@ -27,6 +29,9 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
 
     Route::patch('/request/{artist_request}/accept', [ArtistRequestController::class, 'acceptRequest'])->name('artist.request.accept');
     Route::patch('/request/{artist_request}/reject', [ArtistRequestController::class, 'rejectRequest'])->name('artist.request.reject');
+
+    Route::resource('albums', AlbumController::class)->names('albums');
+    Route::resource('songs', SongController::class)->names('songs');
 });
 
 Route::middleware('auth')->group(function () {
