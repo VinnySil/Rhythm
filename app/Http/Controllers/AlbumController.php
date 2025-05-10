@@ -43,8 +43,6 @@ class AlbumController extends Controller
 
         $artist = auth()->user()->artist;
 
-        // if(!$artist)
-
         //Hago primero una asignacion masiva para poder tener todos los campos actualizados
         $album = Album::create(
             [

@@ -64,4 +64,5 @@ class User extends Authenticatable
     //Relationships
     public function artist(){return $this->hasOne(Artist::class);}
     public function artistRequests() {return $this->hasMany(ArtistRequest::class);}
+    public function songs(){return $this->belongsToMany(Song::class);}
 }
