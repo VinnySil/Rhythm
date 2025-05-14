@@ -31,7 +31,7 @@ class UserController extends Controller
         // if(!empty($searcher)) {$query->where('rol', 'like', '%'.$searcher.'%');}
         if(!empty($searcher)) {$query->where('name', 'like', '%'.$searcher.'%');}
 
-        $users = $query->paginate(3);
+        $users = $query->paginate(1);
 
         return view('users.index', compact('users'));
     }
