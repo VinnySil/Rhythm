@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('albums', AlbumController::class)->names('albums');
         Route::resource('songs', SongController::class)->names('songs');
         Route::get('/artist/songs/{artist}', [ArtistUserController::class, 'songList'])->name('artist.songs');
+        Route::get('/artist/albums/{artist}', [ArtistUserController::class, 'albumList'])->name('artist.albums');
 });
 
 require __DIR__.'/auth.php';

@@ -35,11 +35,6 @@
                             </div>
                             <p class="text-white">{{$song->title}}</p>
                         </div>
-                        <form data-id="{{$song->id}}" method="POST" action={{ route('songs.destroy', $song)}} class="w-10 hover:scale-105 cursor-pointer delete-user-button">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"><img src="{{asset('cruds/eliminar.png')}}" alt="eliminar musica"></button>
-                        </form>
                     </div>
                 </a>
                 @empty
@@ -48,17 +43,19 @@
             </div>
         </div>
         <div id="albums-container">
-            <h1 class="text-white text-2xl mb-2">Albums</h1>
+            <a href="{{route('artist.albums', $artist)}}"><h1 class="text-white text-2xl mb-2">Albums</h1></a>
             <hr>
             <div id="albums" class="flex gap-4 p-4 flex-wrap">
                 @forelse ($albums as $album)
-                    <div id="album-card" class="flex flex-col justify-center items-center gap-2">
-                        <div id="cover-container" class="w-36 h-36 object-cover">
-                            <img src={{asset('storage/img/albums/covers/'.$album->album_cover)}} alt="album-cover">
+                    <a href="{{route('albums.show', $album)}}">
+                        <div id="album-card" class="flex flex-col justify-center items-center gap-2 p-2 hover:bg-gray-800 cursor-pointer rounded-lg">
+                            <div id="cover-container" class="w-36 h-36 object-cover">
+                                <img src={{asset('storage/img/albums/covers/'.$album->album_cover)}} alt="album-cover">
+                            </div>
+                            <p class="text-white">{{$album->title}}</p>
+                            <p class="text-white">{{$album->created_at->format('d/m/Y')}}</p>
                         </div>
-                        <p class="text-white">{{$album->title}}</p>
-                        <p class="text-white">{{$album->created_at->format('d/m/Y')}}</p>
-                    </div>
+                    </a>
                 @empty
                      <div class="text-red-500">No hay albums disponibles</div>
                 @endforelse

@@ -22,4 +22,9 @@ class ArtistUserController extends Controller
         $songs = $artist->songs;
         return view('artists.songs', compact('songs'));
     }
+
+    public function albumList(Artist $artist){
+        $albums = $artist->albums;
+        return view('artists.albums', compact('albums', 'artist'));
+    }
 }

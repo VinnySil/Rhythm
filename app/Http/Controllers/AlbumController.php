@@ -10,7 +10,6 @@ use Intervention\Image\ImageManager;
 
 class AlbumController extends Controller
 {
-    //
 
     public function index(Request $request){
 
@@ -29,6 +28,11 @@ class AlbumController extends Controller
         $albums = $query->paginate(3);
 
         return view('albums.index', compact('albums'));
+    }
+
+    public function show(Album $album){
+        $songs = $album->songs;
+        return view('albums.show', compact('album', 'songs'));
     }
 
     public function create(){
@@ -83,7 +87,13 @@ class AlbumController extends Controller
             $album->save();
         }
 
-        return redirect()->route("albums.index");
+
+        if($user->rol === 'admin' ){
+            return redirect()->route("albums.index");
+        }
+        else if($user->artist){
+            return redirect()->route("artist.dashboard");
+        }
     }
 
     public function edit(Album $album){
@@ -135,7 +145,13 @@ class AlbumController extends Controller
 
         $album->update($request->all());
         $album->save();
-        return redirect()->route("albums.show", $album);
+
+        if($user->rol === 'admin' ){
+            return redirect()->route("albums.show", $album);
+        }
+        else if($user->artist){
+            return redirect()->route("artist.dashboard");
+        }
     }
 
     public function destroy(Album $album){
@@ -145,6 +161,12 @@ class AlbumController extends Controller
             return redirect()->route("home");
 
         $album->delete();
-        return redirect()->route('albums.index');
+
+        if($user->rol === 'admin' ){
+            return redirect()->route('albums.index');
+        }
+        else if($user->artist){
+            return redirect()->route("artist.dashboard");
+        }  
     }
 }
