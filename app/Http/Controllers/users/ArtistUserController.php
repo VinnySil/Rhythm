@@ -8,9 +8,18 @@ use Illuminate\Http\Request;
 
 class ArtistUserController extends Controller
 {
-    public function index(Artist $artist){
+    public function index(){
 
-        return view('artists.dashboard');
+        $user = auth()->user();
+        $artist = auth()->user()->artist;
+        $songs = $artist->songs()->latest()->take(5)->get();
+        $albums = $artist->albums()->latest()->take(5)->get();
 
+        return view('artists.dashboard', compact('user', 'songs', 'albums', 'artist'));
+    }
+
+    public function songList(Artist $artist){
+        $songs = $artist->songs;
+        return view('artists.songs', compact('songs'));
     }
 }

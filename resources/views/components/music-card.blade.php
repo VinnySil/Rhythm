@@ -1,6 +1,6 @@
 <div class="bg-[#212936] w-96 rounded-3xl p-4 text-gray-500 font-sora">
     <div class="grid justify-items-center items-stretch">
-        <img src="{{asset('songs/covers/'.$imageCover)}}" alt="song-cover" class="w-9/12 rounded-2xl">
+        <img src="{{asset('storage/img/musics/covers/'.$imageCover)}}" alt="song-cover" class="w-9/12 rounded-2xl">
         <div class="text-center mt-4">
             <h2 class="text-2xl text-white">{{$title}}</h2>
             <p>{{$artist}}</p>
@@ -16,7 +16,6 @@
             <source src="{{ route('artist-request.stream', $musicSource) }}" type="audio/mpeg">
         </audio>
     </div>
-
     <div id="{{$musicSource->id - 1}}" class="flex justify-center items-center p-8 text-white">
         <button id="bPrev" class="cursor-pointer transition-transform ease-linear hover:scale-110 active:scale-100">
             <img src="{{asset('storage/img/musics/svg/prev.svg')}}" alt="prev button">

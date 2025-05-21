@@ -19,7 +19,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/songs/{artist_request}/stream', [ArtistRequestController::class, 'streamSong'])->name('artist-request.stream');
+Route::get('/songs/{song}/stream', [ArtistRequestController::class, 'streamSong'])->name('artist-request.stream');
 
 Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -30,9 +30,6 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
 
     Route::patch('/request/{artist_request}/accept', [ArtistRequestController::class, 'acceptRequest'])->name('artist.request.accept');
     Route::patch('/request/{artist_request}/reject', [ArtistRequestController::class, 'rejectRequest'])->name('artist.request.reject');
-
-    Route::resource('albums', AlbumController::class)->names('albums');
-    Route::resource('songs', SongController::class)->names('songs');
 });
 
 Route::middleware('auth')->group(function () {
@@ -51,6 +48,10 @@ Route::middleware('auth')->group(function () {
         Route::get('dasboard', [ArtistUserController::class, 'index'])->name('artist.dashboard');
 
     });
+
+        Route::resource('albums', AlbumController::class)->names('albums');
+        Route::resource('songs', SongController::class)->names('songs');
+        Route::get('/artist/songs/{artist}', [ArtistUserController::class, 'songList'])->name('artist.songs');
 });
 
 require __DIR__.'/auth.php';

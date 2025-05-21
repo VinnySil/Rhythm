@@ -32,10 +32,22 @@ class AlbumController extends Controller
     }
 
     public function create(){
+
+        $user = auth()->user();
+
+        if($user->rol !== 'admin' && $user->artist === null)
+            return redirect()->route("home");
+
         return view('albums.create');
     }
 
     public function store(Request $request){
+
+        $user = auth()->user();
+
+        if($user->rol !== 'admin' && $user->artist === null)
+            return redirect()->route("home");
+
         $request->validate([
             'title' => 'required|string|max:30',
             'album-cover-input' => 'nullable|image|mimes:jpeg,png,jpg,gif'
@@ -75,10 +87,20 @@ class AlbumController extends Controller
     }
 
     public function edit(Album $album){
+        $user = auth()->user();
+
+        if($user->rol !== 'admin' && $user->artist === null)
+            return redirect()->route("home");
+        
         return view('albums.edit', compact('album'));
     }
 
     public function update(Request $request, Album $album){
+
+        $user = auth()->user();
+
+        if($user->rol !== 'admin' && $user->artist === null)
+            return redirect()->route("home");
 
         $request->validate([
             'title' => 'required|string|max:30',
@@ -117,6 +139,11 @@ class AlbumController extends Controller
     }
 
     public function destroy(Album $album){
+
+        $user = auth()->user();
+        if($user->rol !== 'admin' && $user->artist === null)
+            return redirect()->route("home");
+
         $album->delete();
         return redirect()->route('albums.index');
     }

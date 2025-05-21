@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artist;
 use App\Models\ArtistRequest;
+use App\Models\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -66,9 +67,9 @@ class ArtistRequestController extends Controller
     }
 
 
-    public function streamSong(ArtistRequest $artistRequest){
+    public function streamSong(Song $song){
 
-        $path = storage_path('app/private/'.$artistRequest->music_file);
+        $path = storage_path('app/private/'.$song->song_source);
 
         if(!file_exists($path))
             abort(404);
